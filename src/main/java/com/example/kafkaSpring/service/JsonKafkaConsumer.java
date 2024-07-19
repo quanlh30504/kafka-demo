@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class JsonKafkaConsumer {
 
 
-    @KafkaListener(topics = "${spring.kafka.json-topic}", groupId = "myGroup")
+    @KafkaListener(topics = "${spring.kafka.json-topic}", groupId = "${spring.kafka.consumer.group-id}")
     public void listenMessage(User user){
         log.info("Message -> " + user);
     }
