@@ -12,6 +12,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: com.example.kafkaSpring.model    # Thêm package model chứa User để kafka tin tưởng
+        spring.json.trusted.packages: com.example.kafkaSpring.model # Thêm package model chứa User để kafka tin tưởng
+        # spring.json.trusted.packages: "*"  # Tin tưởng tất cả các packag
     topic: notifications
     json-topic: messages
