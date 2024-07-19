@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: kafkaSpring
+#  kafka:
+#    #kafka server url
+#    boostrap-servers: localhost:9092
+#    producer:
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      # 0: no wait for kafka response
+#      # 1: leader write success, not wait for follower
+#      # -1: wait for all leader, and replication
+#      acks: -1
+#      retries: 1
+#
+#      #prevent duplicate send
+#      properties.[enable.idempotence]: true
+#      properties.[max.in.flight.requests.per.connection]: 5
+  kafka:
+    bootstrap-servers: localhost:9092  # Địa chỉ của Kafka server
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: myGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.example.kafkaSpring.model    # Thêm package model chứa User để kafka tin tưởng
